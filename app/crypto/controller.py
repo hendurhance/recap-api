@@ -6,3 +6,6 @@ import app.crypto.service as service
 
 def get_top_crypto_prices(skip: int = 0, limit: int = 10):
     return service.scrape_top_crypto_prices(skip, limit)
+
+def get_coin_details(symbol: str):
+    return service.scrape_coin_details(symbol)

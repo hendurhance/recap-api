@@ -2,6 +2,7 @@ from fastapi import FastAPI
 import redis
 from app.core.config import settings
 from app.router.api import api_router
+from app.core.redis_conn import create_redis_connection
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -9,7 +10,7 @@ app = FastAPI(
     version=settings.PROJECT_VERSION, debug=True
 )
 
-r = redis.Redis(host=settings.REDIS_HOST, port=settings.REDIS_PORT)
+r = create_redis_connection()
 
 app.include_router(api_router, prefix=settings.API_VERSION)
 
