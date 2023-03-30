@@ -13,6 +13,6 @@ class Settings:
     REDIS_PORT:str = os.getenv("REDIS_PORT", 6379) # default port
     API_VERSION:str = os.getenv("API_VERSION", "/api/v1")
 
-    CRYPTO_URL:str = os.getenv("CRYPTO_URL")
+    COINGECKO_BASE_URL:str = os.getenv("COINGECKO_BASE_URL")
 
 settings = Settings()

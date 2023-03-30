@@ -7,7 +7,7 @@ import app.utils.http_response as http_response
 
 def scrape_top_crypto_prices(skip=0, limit=10):
     try:
-        url = settings.CRYPTO_URL
+        url = settings.COINGECKO_BASE_URL
         response = requests.get(url)
         soup = BeautifulSoup(response.text, "html.parser")
 
@@ -41,7 +41,7 @@ def scrape_top_crypto_prices(skip=0, limit=10):
 
 def scrape_coin_details(symbol):
     try:
-        url = f"{settings.CRYPTO_URL}/en/coins/{symbol}"
+        url = f"{settings.COINGECKO_BASE_URL}/en/coins/{symbol}"
         response = requests.get(url)
         soup = BeautifulSoup(response.text, "html.parser")
 
