@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+import app.crypto.controller as crypto_controller
 
 router = APIRouter()
 
@@ -9,4 +10,4 @@ router = APIRouter()
 
 @router.get("/current")
 async def get_current_price(skip: int = 0, limit: int = 10):
-    return {"message": "Hello World"}
+    return crypto_controller.get_top_crypto_prices(skip, limit)
