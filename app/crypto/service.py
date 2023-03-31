@@ -53,16 +53,22 @@ def scrape_coin_details(symbol):
         price_data = soup.find("div", {"class": "tw-text-4xl tw-font-bold tw-my-2 tw-flex tw-items-center"}).find_all("span")
         price = price_data[0].text.strip()
         change = price_data[2].find("span").text.strip()
-        
+        coin_statistics = soup.find("table", {"class": "table b-b"}).find_all("tr")
+        market_cap = coin_statistics[5].find_all("td")[0].text.strip()
+        market_cap_rank = coin_statistics[4].find_all("td")[0].text.strip()
+        coin_info = soup.find("div", {"class": "tw-col-span-8 md:tw-pr-8 tw-mt-5 tw-mb-6 md:tw-mb-2 post-body tw-order-3"}).find_all("p")
+        coin_today_summary = coin_info[0].text.strip()
+        coin_detail = coin_info[1].text.strip()
         return {
             "icon": icon,
             "name": name,
             "symbol": symbol,
             "price": price,
-            "change": change
+            "change": change,
+            "market_cap_rank": market_cap_rank,
+            "market_cap": market_cap,
+            "today_summary": coin_today_summary,
+            "detail": coin_detail
         }
     except Exception as e:
-        http_response.service_unavailable_response(
-            message="Something went wrong, or the coin you are looking for does not exist",
-            status_code=status.HTTP_400_BAD_REQUEST
-        )
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Coin with symbol {symbol} not found, please try again")
