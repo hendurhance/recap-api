@@ -14,5 +14,8 @@ class Settings:
     API_VERSION:str = os.getenv("API_VERSION", "/api/v1")
 
     COINGECKO_BASE_URL:str = os.getenv("COINGECKO_BASE_URL")
+    FOX_NEWS_BASE_URL:str = os.getenv("FOX_NEWS_BASE_URL")
+    GUARDIAN_NEWS_BASE_URL:str = os.getenv("GUARDIAN_NEWS_BASE_URL")
+    ABC_NEWS_BASE_URL:str = os.getenv("ABC_NEWS_BASE_URL")
 
 settings = Settings()

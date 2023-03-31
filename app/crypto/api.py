@@ -3,7 +3,6 @@ import app.crypto.controller as crypto_controller
 from fastapi.requests import Request
 from typing import Annotated
 import app.utils.http_response as http_response
-from app.core.redis_cache import cache_response, get_cached_response
 import datetime
 
 router = APIRouter()

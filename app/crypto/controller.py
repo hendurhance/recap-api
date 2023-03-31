@@ -3,7 +3,7 @@ from app.crypto.validators.get_coin_historical_data import validate as validate_
 from app.core.redis_cache import cache_response, get_cached_response
 
 '''
-    @brief: This class is used from the routes to interact with the servicers
+    @brief: This file is used from the crypto routes to interact with the services
 '''
 
 def get_top_crypto_prices(skip: int = 0, limit: int = 10):
