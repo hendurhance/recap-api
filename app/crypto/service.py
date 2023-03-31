@@ -72,3 +72,34 @@ def scrape_coin_details(symbol):
         }
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Coin with symbol {symbol} not found, please try again")
+
+
+def scrape_coin_historical_data(symbol, start_date, end_date):
+    try:
+        url = f"{settings.COINGECKO_BASE_URL}/en/coins/{symbol}/historical_data?start_date={start_date}&end_date={end_date}"
+        response = requests.get(url)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        table = soup.find("table", {"class": "table table-striped text-sm text-lg-normal"})
+        rows = table.find_all("tr")[1:]
+
+        historical_data = []
+        for row in rows:
+            dates = row.find_all("th", {"scope": "row"})
+            columns = row.find_all("td")
+            date = dates[0].text.strip()
+            market_cap = columns[0].text.strip()
+            volume = columns[1].text.strip()
+            opening = columns[2].text.strip()
+            closing = columns[3].text.strip()
+            historical_data.append({
+                "date": date,
+                "market_cap": market_cap,
+                "volume": volume,
+                "opening": opening,
+                "closing": closing
+            })
+
+        return historical_data
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Coin with symbol {symbol} not found, please try again")
