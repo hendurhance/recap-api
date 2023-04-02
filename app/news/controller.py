@@ -15,6 +15,15 @@ def get_current_news(limit: int):
         return response
     return cached_response
     
+def get_categories():
+    redis_key = f"news:categories"
+    cached_response = get_cached_response(redis_key)
+    if cached_response is None:
+        response = service.scrape_categories()
+        cache_response(redis_key, response, 60 * 60)
+        return response
+    return cached_response
+
 def get_news_by_category(category: str, limit: int):
     redis_key = f"news:category:{category}:{limit}"
     cached_response = get_cached_response(redis_key)

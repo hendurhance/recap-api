@@ -18,6 +18,11 @@ async def get_current_news(limit: Annotated[int, 100] = 10):
     response = news_controller.get_current_news(limit)
     return http_response.success_response(response, "Successfully fetched latest news")
 
+@router.get("/categories")
+async def get_categories():
+    response = news_controller.get_categories()
+    return http_response.success_response(response, "Successfully fetched categories")
+
 @router.get("/category/{category}")
 async def get_news_by_category(category: str, limit: Annotated[int, 100] = 10):
     response = news_controller.get_news_by_category(category, limit)

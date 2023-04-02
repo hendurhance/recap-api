@@ -53,5 +53,25 @@ def scrape_current_news(limit: int):
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Error scraping news: {e}")
 
+def scrape_categories():
+    try:
+        fox_url = settings.FOX_NEWS_BASE_URL
+        fox_response = requests.get(fox_url)
+        fox_soup = BeautifulSoup(fox_response.content, "html.parser")
+
+        fox_wrapper = fox_soup.find("nav", {"id": "main-nav"})
+
+        fox_categories = []
+        for link in fox_wrapper.find_all("li", {"class": "menu-item"}):
+            category = link.find("a").text.strip()
+            url = link.find("a").get("href")
+            fox_categories.append({"category": category, "url": url, "source": "Fox News"})
+
+        # guardian_url = settings.GUARDIAN_NEWS_BASE_URL
+        return fox_categories
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Error scraping news categories: {e}")
+
+
 def scrape_news_by_category(category: str, limit: int):
     return []
