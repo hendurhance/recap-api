@@ -32,6 +32,7 @@ def scrape_current_news(limit: int):
         guardian_headlines = []
         for link in guardian_soup.find_all("a", {"data-link-name": "article"}):
             headline = link.text.strip()
+            headline = " ".join(headline.split())
             url = link["href"]
             guardian_headlines.append({"headline": headline, "url": url, "source": "The Guardian"})
         
@@ -67,11 +68,25 @@ def scrape_categories():
             url = link.find("a").get("href")
             fox_categories.append({"category": category, "url": url, "source": "Fox News"})
 
-        # guardian_url = settings.GUARDIAN_NEWS_BASE_URL
-        return fox_categories
+        guardian_url = settings.GUARDIAN_NEWS_BASE_URL
+        guardian_response = requests.get(guardian_url)
+        guardian_soup = BeautifulSoup(guardian_response.content, "html.parser")
+
+        guardian_categories = []
+
+        guardian_wrappers = guardian_soup.find("ul", {"class": "menu-group menu-group--primary"})
+
+        for link in guardian_wrappers.find_all("a", {"class": "menu-item__title", "role": "menuitem"}):
+            category = link.text.strip()
+            url = link.get("href")
+            guardian_categories.append({"category": category, "url": url, "source": "Guardian News"})
+
+        all_categories = fox_categories + guardian_categories
+        return all_categories
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Error scraping news categories: {e}")
 
 
 def scrape_news_by_category(category: str, limit: int):
+    # Check if category is valid
     return []
