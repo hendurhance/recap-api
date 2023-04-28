@@ -1,0 +1,267 @@
+[
+    {
+        "category": "U.S.",
+        "url": "https://www.foxnews.com/us",
+        "source": "Fox News"
+    },
+    {
+        "category": "Politics",
+        "url": "https://www.foxnews.com/politics",
+        "source": "Fox News"
+    },
+    {
+        "category": "World",
+        "url": "https://www.foxnews.com/world",
+        "source": "Fox News"
+    },
+    {
+        "category": "Opinion",
+        "url": "https://www.foxnews.com/opinion",
+        "source": "Fox News"
+    },
+    {
+        "category": "Media",
+        "url": "https://www.foxnews.com/media",
+        "source": "Fox News"
+    },
+    {
+        "category": "Entertainment",
+        "url": "https://www.foxnews.com/entertainment",
+        "source": "Fox News"
+    },
+    {
+        "category": "Sports",
+        "url": "https://www.foxnews.com/sports",
+        "source": "Fox News"
+    },
+    {
+        "category": "Lifestyle",
+        "url": "https://www.foxnews.com/lifestyle",
+        "source": "Fox News"
+    },
+    {
+        "category": "Video",
+        "url": "https://www.foxnews.com/video",
+        "source": "Fox News"
+    },
+    {
+        "category": "More",
+        "url": "#",
+        "source": "Fox News"
+    },
+    {
+        "category": "World news",
+        "url": "https://www.theguardian.com/world",
+        "source": "Guardian News"
+    },
+    {
+        "category": "UK news",
+        "url": "https://www.theguardian.com/uk-news",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Coronavirus",
+        "url": "https://www.theguardian.com/world/coronavirus-outbreak",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Climate crisis",
+        "url": "https://www.theguardian.com/environment/climate-crisis",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Environment",
+        "url": "https://www.theguardian.com/uk/environment",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Science",
+        "url": "https://www.theguardian.com/science",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Global development",
+        "url": "https://www.theguardian.com/global-development",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Football",
+        "url": "https://www.theguardian.com/football",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Tech",
+        "url": "https://www.theguardian.com/uk/technology",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Business",
+        "url": "https://www.theguardian.com/uk/business",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Obituaries",
+        "url": "https://www.theguardian.com/obituaries",
+        "source": "Guardian News"
+    },
+    {
+        "category": "The Guardian view",
+        "url": "https://www.theguardian.com/profile/editorial",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Columnists",
+        "url": "https://www.theguardian.com/index/contributors",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Cartoons",
+        "url": "https://www.theguardian.com/cartoons/archive",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Opinion videos",
+        "url": "https://www.theguardian.com/type/video+tone/comment",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Letters",
+        "url": "https://www.theguardian.com/tone/letters",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Football",
+        "url": "https://www.theguardian.com/football",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Cricket",
+        "url": "https://www.theguardian.com/sport/cricket",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Rugby union",
+        "url": "https://www.theguardian.com/sport/rugby-union",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Tennis",
+        "url": "https://www.theguardian.com/sport/tennis",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Cycling",
+        "url": "https://www.theguardian.com/sport/cycling",
+        "source": "Guardian News"
+    },
+    {
+        "category": "F1",
+        "url": "https://www.theguardian.com/sport/formulaone",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Golf",
+        "url": "https://www.theguardian.com/sport/golf",
+        "source": "Guardian News"
+    },
+    {
+        "category": "US sports",
+        "url": "https://www.theguardian.com/sport/us-sport",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Books",
+        "url": "https://www.theguardian.com/books",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Music",
+        "url": "https://www.theguardian.com/music",
+        "source": "Guardian News"
+    },
+    {
+        "category": "TV & radio",
+        "url": "https://www.theguardian.com/uk/tv-and-radio",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Art & design",
+        "url": "https://www.theguardian.com/artanddesign",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Film",
+        "url": "https://www.theguardian.com/uk/film",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Games",
+        "url": "https://www.theguardian.com/games",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Classical",
+        "url": "https://www.theguardian.com/music/classicalmusicandopera",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Stage",
+        "url": "https://www.theguardian.com/stage",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Fashion",
+        "url": "https://www.theguardian.com/fashion",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Food",
+        "url": "https://www.theguardian.com/food",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Recipes",
+        "url": "https://www.theguardian.com/tone/recipes",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Love & sex",
+        "url": "https://www.theguardian.com/lifeandstyle/love-and-sex",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Health & fitness",
+        "url": "https://www.theguardian.com/lifeandstyle/health-and-wellbeing",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Home & garden",
+        "url": "https://www.theguardian.com/lifeandstyle/home-and-garden",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Women",
+        "url": "https://www.theguardian.com/lifeandstyle/women",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Men",
+        "url": "https://www.theguardian.com/lifeandstyle/men",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Family",
+        "url": "https://www.theguardian.com/lifeandstyle/family",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Travel",
+        "url": "https://www.theguardian.com/uk/travel",
+        "source": "Guardian News"
+    },
+    {
+        "category": "Money",
+        "url": "https://www.theguardian.com/uk/money",
+        "source": "Guardian News"
+    }
+]
