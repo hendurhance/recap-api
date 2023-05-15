@@ -18,3 +18,7 @@ def validate(sort: str):
             return True
     raise HTTPException(
         status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid sort")
+
+def get_sort(sort: str):
+    sort_upper = sort.upper()
+    return SORT_BY[sort_upper]

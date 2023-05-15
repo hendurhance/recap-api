@@ -6,7 +6,7 @@ import app.utils.http_response as http_response
 import random
 from app.movies.validator.does_countries_exists import validate as validate_country
 from app.movies.validator.does_movie_type_exists import validate as validate_movie_type
-from app.movies.validator.does_movies_sort_by_exists import validate as validate_movie_sort_by
+from app.movies.validator.does_movies_sort_by_exists import validate as validate_movie_sort_by, get_sort
 
 def scrape_upcoming_movies(skip: int, limit: int, country: str, type: str):
     # Validate the country & type
@@ -51,12 +51,29 @@ def scrape_upcoming_movies(skip: int, limit: int, country: str, type: str):
 def scrape_top_rated_movies(skip: int, limit: int, sort_by: str, sort_type: str, page: int):
     # Validate the sort by
     sort_by_exists = validate_movie_sort_by(sort_by)
-    # try:
-    #     imdb_url = settings.IMDB_BASE_URL + f"/chart/top/?sort={sort_by},{sort_type}&mode=simple&page={page}"
-    #     imdb_response = requests.get(imdb_url, headers=settings.IMDB_HEADERS)
-    #     imdb_soup = BeautifulSoup(imdb_response.content, "html.parser")
+    sort_by = get_sort(sort_by)
+    try:
+        imdb_url = settings.IMDB_BASE_URL + f"/chart/top/?sort={sort_by},{sort_type}&mode=simple&page={page}"
+        imdb_response = requests.get(imdb_url, headers=settings.IMDB_HEADERS)
+        imdb_soup = BeautifulSoup(imdb_response.content, "html.parser")
 
-    #     movies_data = imdb_soup.find("tbody", {"class": "lister-list"})
-    #     movies_info = []
-    #     for movies in movies_data.find_all("tr"):
-    #         # 
+        movies_data = imdb_soup.find("tbody", {"class": "lister-list"})
+        movies_info = []
+        for movie in movies_data.find_all("tr"):
+            image_base = movie.find("td", {"class": "posterColumn"})
+            image = image_base.find("a").find("img")
+            url = image_base.find("a")["href"].split("?")[0]
+            title_base = movie.find("td", {"class": "titleColumn"})
+            title = title_base.find("a").text.strip()
+            year = title_base.find("span", {"class": "secondaryInfo"}).text.strip()[1:-1]
+            rating_base = movie.find("td", {"class": "ratingColumn imdbRating"})
+            rating = rating_base.find("strong").text.strip()
+            if image is not None:
+                movies_info.append({"title": title, "url": 'https://www.imdb.com' + url, "image": image["src"], "release_year": year, "rating": rating})
+        if len(movies_info) == 0:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No movies found")
+        else:
+            return movies_info[skip:limit]
+    except Exception as e:
+        print(e)
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Something went wrong")
