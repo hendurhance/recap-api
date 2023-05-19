@@ -77,3 +77,30 @@ def scrape_top_rated_movies(skip: int, limit: int, sort_by: str, sort_type: str,
     except Exception as e:
         print(e)
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Something went wrong")
+
+def scrape_movie_details(movie_id: str):
+    imdb_url = settings.IMDB_BASE_URL + f"/title/{movie_id}/"
+    imdb_response = requests.get(imdb_url, headers=settings.IMDB_HEADERS)
+    imdb_soup = BeautifulSoup(imdb_response.content, "html.parser")
+    try:
+        title_base = imdb_soup.find("h1", {"data-testid": "hero__pageTitle"})
+        title = title_base.find("span").text.strip()
+        image = image = imdb_soup.find("img", {"class": "ipc-image"})["src"]
+        categories_base = imdb_soup.find_all("a", {"class": "ipc-chip ipc-chip--on-baseAlt"})
+        categories = []
+        for category in categories_base:
+            categories.append(category.find("span").text.strip())
+        plot_base = imdb_soup.find("p", {"data-testid": "plot"})
+        plot = plot_base.find("span", {"data-testid": "plot-xl"})
+        principal_base = imdb_soup.find_all("a", {"class": "ipc-metadata-list-item__list-content-item ipc-metadata-list-item__list-content-item--link"})
+
+        principals = []
+        for pri in principal_base:
+            principals.append(pri.text.strip())
+        
+        return {"title": title, "image": image, "categories": categories, "plot": plot.text.strip(), "tags": principals}
+        # return {"title": title, "image": image, "categories": categories, "plot": plot, "principals": principals}
+    except Exception as e:
+        print(e)
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Something went wrong")
+        

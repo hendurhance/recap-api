@@ -22,3 +22,30 @@ def get_top_rated_movies(skip: int = 0, limit: int = 10, sort_by : str = "RANKIN
         cache_response(redis_key, response, 60 * 60 * 24)
         return response
     return cached_data
+
+def get_movie_details(movie_id: str):
+    redis_key = f"movie_details:{movie_id}"
+    cached_data = get_cached_response(redis_key)
+    if cached_data is None:
+        response = service.scrape_movie_details(movie_id)
+        cache_response(redis_key, response, 60 * 60 * 24)
+        return response
+    return cached_data
+
+def get_movie_news():
+    redis_key = f"movie_news"
+    cached_data = get_cached_response(redis_key)
+    if cached_data is None:
+        response = service.scrape_movie_news()
+        cache_response(redis_key, response, 60 * 60 * 24)
+        return response
+    return cached_data
+
+def get_box_office():
+    redis_key = f"box_office"
+    cached_data = get_cached_response(redis_key)
+    if cached_data is None:
+        response = service.scrape_box_office()
+        cache_response(redis_key, response, 60 * 60 * 24)
+        return response
+    return cached_data

@@ -21,3 +21,18 @@ async def get_upcoming_movies(skip: Annotated[int, 0] = 0, limit: Annotated[int,
 async def get_top_rated_movies(skip: Annotated[int, 0] = 0, limit: Annotated[int, 100] = 10, sort_by : Annotated[str, "RANKING"] = "RANKING", sort_type: Annotated[str, "asc"] = "asc", page: Annotated[int, 1] = 1):
     response = movies_controller.get_top_rated_movies(skip, limit, sort_by, sort_type, page)
     return http_response.success_response(response, "Successfully fetched top rated movies")
+
+@router.get("/movie/{movie_id}")
+async def get_movie_details(movie_id: str):
+    response = movies_controller.get_movie_details(movie_id)
+    return http_response.success_response(response, "Successfully fetched movie details")
+
+@router.get("/news")
+async def get_movie_news():
+    response = movies_controller.get_movie_news()
+    return http_response.success_response(response, "Successfully fetched movie news")
+
+@router.get("/box_office")
+async def get_box_office():
+    response = movies_controller.get_box_office()
+    return http_response.success_response(response, "Successfully fetched box office")
