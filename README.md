@@ -34,7 +34,7 @@ The following API endpoints are available:
 The API configuration is stored in the `app/core/config.py` file. You can modify the configuration by changing the values in this file or environment variables `env` file. The following configuration options are available:
 
 ```bash
-touch .env
+cp .env.example .env
 ```
 
 - `PROJECT_NAME`: The name of the project.
