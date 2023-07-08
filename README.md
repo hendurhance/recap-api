@@ -1,6 +1,6 @@
 # Recap API
 
-Recap API is a REST API based on data scraping built with FastAPI and Redis. The API scrapes data from [CoinGecko](https://www.coingecko.com) for crypto, and [NBC News](https://www.nbcnews.com) for news articles. The scraped data is stored in Redis for fast retrieval.
+Recap API is a REST API based on data scraping built with FastAPI and Redis. The API scrapes data from [CoinGecko](https://www.coingecko.com) for crypto, [IMDB](https://www.imdb.com) for movies, and [NBC News](https://www.nbcnews.com) for news articles. The scraped data is stored in Redis for fast retrieval.
 
 ## Getting Started
 
